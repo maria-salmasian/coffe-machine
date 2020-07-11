@@ -1,19 +1,15 @@
+import java.util.Scanner;
 public class CoffeeIngredients {
     public static void main(String[] args) {
-        System.out.println("Hello! Now I will make your coffee");
-        System.out.println("Starting to make a coffee");
-        System.out.println("...");
-        System.out.println("Grinding coffee beans");
-        System.out.println("...");
-        System.out.println("Boiling water");
-        System.out.println("...");
-        System.out.println("Mixing boiled water with crushed coffee beans");
-        System.out.println("...");
-        System.out.println("Pouring coffee into the cup");
-        System.out.println("...");
-        System.out.println("Pouring some milk into the cup");
-        System.out.println("...");
-        System.out.println("Coffee is ready!");
-        System.out.println("Here's your cup of coffee! Enjoy your day :)");
+        int water = 200;
+        int milk = 50;
+        int coffeeBeans = 15;
+        System.out.println("Hello! Tell me how many cups of coffee do you need and I will tell you what ingredients I will need to make " +
+                "them and how much");
+        Scanner enter = new Scanner(System.in);
+        int cups = enter.nextInt();
+        System.out.println("To make " + cups + " numbers of coffee I will need " + (cups*water) + " ml of water and " +
+                (cups*milk) + " ml of milk and " + (cups*coffeeBeans) + " grams of coffee beans!");
+
     }
 }
