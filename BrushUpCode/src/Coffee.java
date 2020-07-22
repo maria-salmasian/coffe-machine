@@ -7,6 +7,7 @@ public class Coffee  {
     private int cups = 9;
     private int dollar = 550;
     State coffeeMachineState = State.NONE;
+    Scanner enter = new Scanner(System.in);
     //constructor
     public Coffee() {
     }
@@ -54,11 +55,8 @@ public class Coffee  {
     }
 
     //method that will be used in main (the only method), it contains methods fill take buy remaining in it
-    public void instruction() {
+    public void instruction(String input) {
         this.coffeeMachineState = State.ACTION;
-        System.out.println("Hello! Welcome to the Coffee Machine!  PLease enter an instruction: take, fill, buy, remaining, exit");
-        Scanner enter = new Scanner(System.in);
-        String input = enter.nextLine();
         String take = "take";
         String fill = "fill";
         String buy = "buy";
