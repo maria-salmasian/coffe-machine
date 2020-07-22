@@ -1,33 +1,33 @@
 import java.util.Scanner;
 
 public class CoffeeOnLoop {
-    private static int coffeeBeans = 120;
-    private static int water = 400;
-    private static int milk = 540;
-    private static int cups = 9;
-    private static int dollar = 550;
+    private int coffeeBeans = 120;
+    private int water = 400;
+    private  int milk = 540;
+    private  int cups = 9;
+    private  int dollar = 550;
 
-    public static void setCoffeeBeans(int coffeeBeans) {
-        CoffeeOnLoop.coffeeBeans = coffeeBeans;
+    public void setCoffeeBeans(int coffeeBeans) {
+        this.coffeeBeans = coffeeBeans;
     }
 
-    public static void setCups(int cups) {
-        CoffeeOnLoop.cups = cups;
+    public void setCups(int cups) {
+        this.cups = cups;
     }
 
-    public static void setDollar(int dollar) {
-        CoffeeOnLoop.dollar = dollar;
+    public void setDollar(int dollar) {
+        this.dollar = dollar;
     }
 
-    public static void setMilk(int milk) {
-        CoffeeOnLoop.milk = milk;
+    public void setMilk(int milk) {
+        this.milk = milk;
     }
 
-    public static void setWater(int water) {
-        CoffeeOnLoop.water = water;
+    public void setWater(int water) {
+        this.water = water;
     }
 
-    public static void main(String[] args) {
+    public  void main(String[] args) {
         String take = "take";
         String fill = "fill";
         String buy = "buy";
@@ -62,14 +62,14 @@ public class CoffeeOnLoop {
     }
 
 
-    public static void take(int dollar) {
+    public  void take(int dollar) {
         System.out.println("I gave you " + dollar + "$");
         dollar -= dollar;
         setDollar(dollar);
 
     }
 
-    public static void fill(int water, int milk, int coffeeBeans, int cups) {
+    public  void fill(int water, int milk, int coffeeBeans, int cups) {
         Scanner enter = new Scanner(System.in);
         System.out.println("Write how many ml of water do you want to add:");
         int addedWater = enter.nextInt();
@@ -90,7 +90,7 @@ public class CoffeeOnLoop {
 
     }
 
-    public static void buy(int dollar, int water, int milk, int coffeeBeans, int cups) {
+    public  void buy(int dollar, int water, int milk, int coffeeBeans, int cups) {
         Scanner enter = new Scanner(System.in);
         System.out.println("What do you want to buy? 1) espresso 2) latte 3) cappuccino ? If mistaken you can go back by instruction  4) back");
         int choice = enter.nextInt();
@@ -111,12 +111,12 @@ public class CoffeeOnLoop {
                 break;
             }
             case 4: {
-                continue;
+                break;
             }
         }
     }
 
-    public static void buyEspresso(int dollar, int water, int milk, int coffeeBeans, int cups) {
+    public  void buyEspresso(int dollar, int water, int milk, int coffeeBeans, int cups) {
         int espressoWater = 250;
         int espressoCoffee = 16;
         int espressoMoney = 4;
@@ -143,7 +143,7 @@ public class CoffeeOnLoop {
 
     }
 
-    public static void buyLatte(int dollar, int water, int milk, int coffeeBeans, int cups) {
+    public  void buyLatte(int dollar, int water, int milk, int coffeeBeans, int cups) {
         int latteWater = 350;
         int latteCoffee = 20;
         int latteMilk = 75;
@@ -173,7 +173,7 @@ public class CoffeeOnLoop {
         }
     }
 
-    public static void buyCappuccino(int dollar, int water, int milk, int coffeeBeans, int cups) {
+    public  void buyCappuccino(int dollar, int water, int milk, int coffeeBeans, int cups) {
         int cappuccinoWater = 200;
         int cappuccinoMilk = 100;
         int cappuccinoCoffee = 12;
@@ -203,7 +203,7 @@ public class CoffeeOnLoop {
         }
     }
 
-    public static void remaining(int dollar, int water, int milk, int coffeeBeans, int cups) {
+    public  void remaining(int dollar, int water, int milk, int coffeeBeans, int cups) {
         System.out.println("At this moment the coffee" +
                 "machine has " + coffeeBeans + " grams of coffee beans, " + milk + " ml of milk, " + water +
                 " ml of water, " + cups + " cups and " + dollar + "$  ");
