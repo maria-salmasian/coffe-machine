@@ -24,11 +24,19 @@ public class Coffee {
     State coffeeMachineState = State.NONE;
     Scanner enter = new Scanner(System.in);
 
-    /*constructor*/
+
+
+    /**
+     * constructor
+     */
+
     public Coffee() {
     }
 
-    /*getters*/
+    /**
+     * getters
+     * @return
+     */
     private int getCoffeeBeans() {
         return coffeeBeans;
     }
@@ -49,7 +57,10 @@ public class Coffee {
         return water;
     }
 
-    /*setters*/
+    /**
+     * setters
+     * @param coffeeBeans
+     */
     private void setCoffeeBeans(int coffeeBeans) {
         this.coffeeBeans = coffeeBeans;
     }
@@ -70,7 +81,11 @@ public class Coffee {
         this.water = water;
     }
 
-    /*method that will be used in main (the only method), it contains methods fill take buy remaining in it*/
+
+    /**
+     * method that will be used in main (the only method), it contains methods fill take buy remaining in it
+     * @param input
+     */
     public void instruction(String input) {
         this.coffeeMachineState = State.ACTION;
         String take = "take";
@@ -104,7 +119,11 @@ public class Coffee {
     }
 
 
-    /*method for instruction take*/
+
+    /**
+     * method for instruction take
+     * @param dollar
+     */
     private void take(int dollar) {
         System.out.println("I gave you " + dollar + "$");
         dollar -= dollar;
@@ -112,7 +131,14 @@ public class Coffee {
 
     }
 
-    /*method for instruction fill*/
+
+    /**
+     * method for instruction fill
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void fill(int water, int milk, int coffeeBeans, int cups) {
         this.coffeeMachineState = State.FILLING;
         Scanner enter = new Scanner(System.in);
@@ -135,7 +161,16 @@ public class Coffee {
 
     }
 
-    /*method for instruction buy, consists of three different methods to buy espresso latte and cappuccino*/
+
+
+    /**
+     * method for instruction buy, consists of three different methods to buy espresso latte and cappuccino
+     * @param dollar
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void buy(int dollar, int water, int milk, int coffeeBeans, int cups) {
         Scanner enter = new Scanner(System.in);
         System.out.println("What do you want to buy? 1) espresso 2) latte 3) cappuccino ? If mistaken you can go back by instruction  4) back");
@@ -167,7 +202,14 @@ public class Coffee {
     }
 
 
-    /*method for buying espresso(used in method buy)*/
+    /**
+     * method for buying espresso(used in method buy)
+     * @param dollar
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void buyEspresso(int dollar, int water, int milk, int coffeeBeans, int cups) {
         enoughForCoffee("espresso");
         water -= espressoWater;
@@ -180,7 +222,16 @@ public class Coffee {
         setCups(cups);
     }
 
-    /*method for buying Latte(used in method buy)*/
+
+
+    /**
+     * method for buying Latte(used in method buy)
+     * @param dollar
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void buyLatte(int dollar, int water, int milk, int coffeeBeans, int cups) {
         enoughForCoffee("latte");
         water -= latteWater;
@@ -196,7 +247,15 @@ public class Coffee {
 
     }
 
-    /*method for buying Cappuccino(used in method buy)*/
+
+    /**
+     * method for buying Cappuccino(used in method buy)
+     * @param dollar
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void buyCappuccino(int dollar, int water, int milk, int coffeeBeans, int cups) {
         enoughForCoffee("cappuccino");
         water -= cappuccinoWater;
@@ -257,7 +316,16 @@ public class Coffee {
 
 
     }
-    /*method for instruction remaining*/
+
+
+    /**
+     * method for instruction remaining
+     * @param dollar
+     * @param water
+     * @param milk
+     * @param coffeeBeans
+     * @param cups
+     */
     private void remaining(int dollar, int water, int milk, int coffeeBeans, int cups) {
         System.out.println("At this moment the coffee" +
                 "machine has " + coffeeBeans + " grams of coffee beans, " + milk + " ml of milk, " + water +
