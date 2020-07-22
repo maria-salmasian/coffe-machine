@@ -1,18 +1,34 @@
 import java.util.Scanner;
 
-public class Coffee  {
+public class Coffee {
     private int coffeeBeans = 120;
     private int water = 400;
     private int milk = 540;
     private int cups = 9;
     private int dollar = 550;
+
+    private int espressoWater = 250;
+    private int espressoCoffee = 16;
+    private int espressoMoney = 4;
+
+    int latteWater = 350;
+    int latteCoffee = 20;
+    int latteMilk = 75;
+    int latteMoney = 7;
+
+    int cappuccinoWater = 200;
+    int cappuccinoMilk = 100;
+    int cappuccinoCoffee = 12;
+    int cappuccinoMoney = 6;
+
     State coffeeMachineState = State.NONE;
     Scanner enter = new Scanner(System.in);
-    //constructor
+
+    /*constructor*/
     public Coffee() {
     }
 
-    //getters
+    /*getters*/
     private int getCoffeeBeans() {
         return coffeeBeans;
     }
@@ -33,7 +49,7 @@ public class Coffee  {
         return water;
     }
 
-    //setters
+    /*setters*/
     private void setCoffeeBeans(int coffeeBeans) {
         this.coffeeBeans = coffeeBeans;
     }
@@ -54,7 +70,7 @@ public class Coffee  {
         this.water = water;
     }
 
-    //method that will be used in main (the only method), it contains methods fill take buy remaining in it
+    /*method that will be used in main (the only method), it contains methods fill take buy remaining in it*/
     public void instruction(String input) {
         this.coffeeMachineState = State.ACTION;
         String take = "take";
@@ -88,7 +104,7 @@ public class Coffee  {
     }
 
 
-    //method for instruction take
+    /*method for instruction take*/
     private void take(int dollar) {
         System.out.println("I gave you " + dollar + "$");
         dollar -= dollar;
@@ -96,7 +112,7 @@ public class Coffee  {
 
     }
 
-    //method for instruction fill
+    /*method for instruction fill*/
     private void fill(int water, int milk, int coffeeBeans, int cups) {
         this.coffeeMachineState = State.FILLING;
         Scanner enter = new Scanner(System.in);
@@ -119,7 +135,7 @@ public class Coffee  {
 
     }
 
-    //method for instruction buy, consists of three different methods to buy espresso latte and cappuccino
+    /*method for instruction buy, consists of three different methods to buy espresso latte and cappuccino*/
     private void buy(int dollar, int water, int milk, int coffeeBeans, int cups) {
         Scanner enter = new Scanner(System.in);
         System.out.println("What do you want to buy? 1) espresso 2) latte 3) cappuccino ? If mistaken you can go back by instruction  4) back");
@@ -150,97 +166,98 @@ public class Coffee  {
         }
     }
 
-    //method for buying espresso(used in method buy)
+
+    /*method for buying espresso(used in method buy)*/
     private void buyEspresso(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        int espressoWater = 250;
-        int espressoCoffee = 16;
-        int espressoMoney = 4;
-        if (water >= espressoWater && coffeeBeans >= espressoCoffee && cups >= 1) {
-            System.out.println("I have enough ingredients to make your coffee! \n Here is your coffee");
-            water -= espressoWater;
-            setWater(water);
-            coffeeBeans -= espressoCoffee;
-            setCoffeeBeans(coffeeBeans);
-            dollar += espressoMoney;
-            setDollar(dollar);
-            cups -= 1;
-            setCups(cups);
-
-
-        } else {
-            if (water < espressoWater)
-                System.out.println("not enough water");
-            else if (coffeeBeans < espressoCoffee)
-                System.out.println("not enough coffee");
-            else if (cups == 0)
-                System.out.println("not enough cups");
-        }
-
+        enoughForCoffee("espresso");
+        water -= espressoWater;
+        setWater(water);
+        coffeeBeans -= espressoCoffee;
+        setCoffeeBeans(coffeeBeans);
+        dollar += espressoMoney;
+        setDollar(dollar);
+        cups -= 1;
+        setCups(cups);
     }
 
-    //method for buying Latte(used in method buy)
+    /*method for buying Latte(used in method buy)*/
     private void buyLatte(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        int latteWater = 350;
-        int latteCoffee = 20;
-        int latteMilk = 75;
-        int latteMoney = 7;
-        if (water >= latteWater && coffeeBeans >= latteCoffee && cups >= 1 && milk >= latteMilk) {
-            System.out.println("I have enough ingredients to make your coffee! \n Here is your coffee");
-            water -= latteWater;
-            setWater(water);
-            milk -= latteMilk;
-            setMilk(milk);
-            coffeeBeans -= latteCoffee;
-            setCoffeeBeans(coffeeBeans);
-            dollar += latteMoney;
-            setDollar(dollar);
-            cups -= 1;
-            setCups(cups);
-        } else {
-            if (water < latteWater)
-                System.out.println("not enough water");
-            else if (coffeeBeans < latteCoffee)
-                System.out.println("not enough coffee");
-            else if (milk < latteMilk)
-                System.out.println("not enough milk");
-            else if (cups == 0)
-                System.out.println("not enough cups");
+        enoughForCoffee("latte");
+        water -= latteWater;
+        setWater(water);
+        milk -= latteMilk;
+        setMilk(milk);
+        coffeeBeans -= latteCoffee;
+        setCoffeeBeans(coffeeBeans);
+        dollar += latteMoney;
+        setDollar(dollar);
+        cups -= 1;
+        setCups(cups);
 
-        }
     }
 
-    //method for buying Cappuccino(used in method buy)
+    /*method for buying Cappuccino(used in method buy)*/
     private void buyCappuccino(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        int cappuccinoWater = 200;
-        int cappuccinoMilk = 100;
-        int cappuccinoCoffee = 12;
-        int cappuccinoMoney = 6;
-        if (water >= cappuccinoWater && coffeeBeans >= cappuccinoCoffee && cups >= 1 && milk >= cappuccinoMilk) {
-            System.out.println("I have enough ingredients to make your coffee! \n Here is your coffee");
-            water -= cappuccinoWater;
-            setWater(water);
-            milk -= cappuccinoMilk;
-            setMilk(milk);
-            coffeeBeans -= cappuccinoCoffee;
-            setCoffeeBeans(coffeeBeans);
-            dollar += cappuccinoMoney;
-            setDollar(dollar);
-            cups -= 1;
-            setCups(cups);
-        } else {
-            if (water < cappuccinoWater)
-                System.out.println("not enough water");
-            else if (coffeeBeans < cappuccinoCoffee)
-                System.out.println("not enough coffee");
-            else if (milk < cappuccinoMilk)
-                System.out.println("not enough milk");
-            else if (cups == 0)
-                System.out.println("not enough cups");
+        enoughForCoffee("cappuccino");
+        water -= cappuccinoWater;
+        setWater(water);
+        milk -= cappuccinoMilk;
+        setMilk(milk);
+        coffeeBeans -= cappuccinoCoffee;
+        setCoffeeBeans(coffeeBeans);
+        dollar += cappuccinoMoney;
+        setDollar(dollar);
+        cups -= 1;
+        setCups(cups);
 
-        }
     }
 
-    //method for instruction remaining
+
+    private void enoughForCoffee(String coffeeType) {
+        if (coffeeType.equals("espresso")) {
+            if (water >= espressoWater && coffeeBeans >= espressoCoffee && cups >= 1)
+                System.out.println("I have enough ingredients to make your espresso! \n Here is your coffee");
+            else {
+                if (water < espressoWater)
+                    System.out.println("not enough water");
+                else if (coffeeBeans < espressoCoffee)
+                    System.out.println("not enough coffee");
+                else if (cups == 0)
+                    System.out.println("not enough cups");
+            }
+        } else if (coffeeType.equals("latte")) {
+            if (water >= latteWater && coffeeBeans >= latteCoffee && cups >= 1 && milk >= latteMilk)
+                System.out.println("I have enough ingredients to make your latte! \n Here is your coffee");
+            else {
+                if (water < latteWater)
+                    System.out.println("not enough water");
+                else if (coffeeBeans < latteCoffee)
+                    System.out.println("not enough coffee");
+                else if (milk < latteMilk)
+                    System.out.println("not enough milk");
+                else if (cups == 0)
+                    System.out.println("not enough cups");
+
+            }
+        } else if (coffeeType.equals("cappuccino")) {
+            if (water >= cappuccinoWater && coffeeBeans >= cappuccinoCoffee && cups >= 1 && milk >= cappuccinoMilk)
+                System.out.println("I have enough ingredients to make your cappuccino! \n Here is your coffee");
+            else {
+                if (water < cappuccinoWater)
+                    System.out.println("not enough water");
+                else if (coffeeBeans < cappuccinoCoffee)
+                    System.out.println("not enough coffee");
+                else if (milk < cappuccinoMilk)
+                    System.out.println("not enough milk");
+                else if (cups == 0)
+                    System.out.println("not enough cups");
+
+            }
+        }
+
+
+    }
+    /*method for instruction remaining*/
     private void remaining(int dollar, int water, int milk, int coffeeBeans, int cups) {
         System.out.println("At this moment the coffee" +
                 "machine has " + coffeeBeans + " grams of coffee beans, " + milk + " ml of milk, " + water +
