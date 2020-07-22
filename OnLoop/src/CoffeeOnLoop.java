@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class CoffeeOnLoop {
-    static int coffeeBeans = 120;
-    static int water = 400;
-    static int milk = 540;
-    static int cups = 9;
-    static int dollar = 550;
+    private static int coffeeBeans = 120;
+    private static int water = 400;
+    private static int milk = 540;
+    private static int cups = 9;
+    private static int dollar = 550;
 
     public static void main(String[] args) {
         String take = "take";
