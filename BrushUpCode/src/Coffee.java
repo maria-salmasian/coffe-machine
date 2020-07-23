@@ -25,16 +25,16 @@ public class Coffee {
     Scanner enter = new Scanner(System.in);
 
 
-
     /**
      * constructor
      */
 
-    public Coffee() {
+    protected Coffee() {
     }
 
     /**
      * getters
+     *
      * @return
      */
     private int getCoffeeBeans() {
@@ -59,6 +59,7 @@ public class Coffee {
 
     /**
      * setters
+     *
      * @param coffeeBeans
      */
     private void setCoffeeBeans(int coffeeBeans) {
@@ -84,6 +85,7 @@ public class Coffee {
 
     /**
      * method that will be used in main (the only method), it contains methods fill take buy remaining in it
+     *
      * @param input
      */
     public void instruction(String input) {
@@ -119,9 +121,9 @@ public class Coffee {
     }
 
 
-
     /**
      * method for instruction take
+     *
      * @param dollar
      */
     private void take(int dollar) {
@@ -134,6 +136,7 @@ public class Coffee {
 
     /**
      * method for instruction fill
+     *
      * @param water
      * @param milk
      * @param coffeeBeans
@@ -162,9 +165,9 @@ public class Coffee {
     }
 
 
-
     /**
      * method for instruction buy, consists of three different methods to buy espresso latte and cappuccino
+     *
      * @param dollar
      * @param water
      * @param milk
@@ -185,7 +188,6 @@ public class Coffee {
 
             case 2: {
                 System.out.println("Yummy Latte!");
-
                 buyLatte(dollar, water, milk, coffeeBeans, cups);
                 break;
             }
@@ -204,6 +206,7 @@ public class Coffee {
 
     /**
      * method for buying espresso(used in method buy)
+     *
      * @param dollar
      * @param water
      * @param milk
@@ -211,7 +214,7 @@ public class Coffee {
      * @param cups
      */
     private void buyEspresso(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        enoughForCoffee("espresso");
+        enoughForEspresso();
         water -= espressoWater;
         setWater(water);
         coffeeBeans -= espressoCoffee;
@@ -223,9 +226,9 @@ public class Coffee {
     }
 
 
-
     /**
      * method for buying Latte(used in method buy)
+     *
      * @param dollar
      * @param water
      * @param milk
@@ -233,7 +236,7 @@ public class Coffee {
      * @param cups
      */
     private void buyLatte(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        enoughForCoffee("latte");
+        enoughForLatte();
         water -= latteWater;
         setWater(water);
         milk -= latteMilk;
@@ -250,6 +253,7 @@ public class Coffee {
 
     /**
      * method for buying Cappuccino(used in method buy)
+     *
      * @param dollar
      * @param water
      * @param milk
@@ -257,7 +261,7 @@ public class Coffee {
      * @param cups
      */
     private void buyCappuccino(int dollar, int water, int milk, int coffeeBeans, int cups) {
-        enoughForCoffee("cappuccino");
+        enoughForCappuccino();
         water -= cappuccinoWater;
         setWater(water);
         milk -= cappuccinoMilk;
@@ -271,55 +275,56 @@ public class Coffee {
 
     }
 
+    private void enoughForEspresso() {
+        if (water >= espressoWater && coffeeBeans >= espressoCoffee && cups >= 1)
+            System.out.println("I have enough ingredients to make your espresso! \n Here is your coffee");
+        else {
+            if (water < espressoWater)
+                System.out.println("not enough water");
+            else if (coffeeBeans < espressoCoffee)
+                System.out.println("not enough coffee");
+            else if (cups == 0)
+                System.out.println("not enough cups");
+        }
+    }
 
-    private void enoughForCoffee(String coffeeType) {
-        if (coffeeType.equals("espresso")) {
-            if (water >= espressoWater && coffeeBeans >= espressoCoffee && cups >= 1)
-                System.out.println("I have enough ingredients to make your espresso! \n Here is your coffee");
-            else {
-                if (water < espressoWater)
-                    System.out.println("not enough water");
-                else if (coffeeBeans < espressoCoffee)
-                    System.out.println("not enough coffee");
-                else if (cups == 0)
-                    System.out.println("not enough cups");
-            }
-        } else if (coffeeType.equals("latte")) {
-            if (water >= latteWater && coffeeBeans >= latteCoffee && cups >= 1 && milk >= latteMilk)
-                System.out.println("I have enough ingredients to make your latte! \n Here is your coffee");
-            else {
-                if (water < latteWater)
-                    System.out.println("not enough water");
-                else if (coffeeBeans < latteCoffee)
-                    System.out.println("not enough coffee");
-                else if (milk < latteMilk)
-                    System.out.println("not enough milk");
-                else if (cups == 0)
-                    System.out.println("not enough cups");
+    private void enoughForLatte() {
+        if (water >= latteWater && coffeeBeans >= latteCoffee && cups >= 1 && milk >= latteMilk)
+            System.out.println("I have enough ingredients to make your latte! \n Here is your coffee");
+        else {
+            if (water < latteWater)
+                System.out.println("not enough water");
+            else if (coffeeBeans < latteCoffee)
+                System.out.println("not enough coffee");
+            else if (milk < latteMilk)
+                System.out.println("not enough milk");
+            else if (cups == 0)
+                System.out.println("not enough cups");
 
-            }
-        } else if (coffeeType.equals("cappuccino")) {
-            if (water >= cappuccinoWater && coffeeBeans >= cappuccinoCoffee && cups >= 1 && milk >= cappuccinoMilk)
-                System.out.println("I have enough ingredients to make your cappuccino! \n Here is your coffee");
-            else {
-                if (water < cappuccinoWater)
-                    System.out.println("not enough water");
-                else if (coffeeBeans < cappuccinoCoffee)
-                    System.out.println("not enough coffee");
-                else if (milk < cappuccinoMilk)
-                    System.out.println("not enough milk");
-                else if (cups == 0)
-                    System.out.println("not enough cups");
-
-            }
         }
 
+    }
 
+    private void enoughForCappuccino() {
+        if (water >= cappuccinoWater && coffeeBeans >= cappuccinoCoffee && cups >= 1 && milk >= cappuccinoMilk)
+            System.out.println("I have enough ingredients to make your cappuccino! \n Here is your coffee");
+        else {
+            if (water < cappuccinoWater)
+                System.out.println("not enough water");
+            else if (coffeeBeans < cappuccinoCoffee)
+                System.out.println("not enough coffee");
+            else if (milk < cappuccinoMilk)
+                System.out.println("not enough milk");
+            else if (cups == 0)
+                System.out.println("not enough cups");
+
+        }
     }
 
 
     /**
      * method for instruction remaining
+     *
      * @param dollar
      * @param water
      * @param milk

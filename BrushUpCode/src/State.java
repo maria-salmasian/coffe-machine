@@ -3,6 +3,6 @@ public enum State {
     ACTION,
     OFF,
     MAKINGCOFFE,
-    FILLING,
+    FILLING;
 
 }
