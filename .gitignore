@@ -1,14 +1,4 @@
 
-/.idea/.gitignore
-/.idea/coffe-machine.iml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/vcs.xml
-/coffee-machine/coffee-machine.iml
-/production/coffee-machine/CoffeeMachine.class
-/coffeeIngredients/coffeeIngredients.iml
-/production/coffeeIngredients/CoffeeIngredients.class
+*.iml
 /.idea/
-/OnLoop/OnLoop.iml
-/production/OnLoop/CoffeeOnLoop.class
-/BrushUpCode/BrushUpCode.iml
+/out/
