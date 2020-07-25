@@ -1,5 +1,6 @@
 # coffee-machine
 virtual coffee
+
 1) coffee-machine: this is a program that prints the steps necessary to make coffee. 
 2) coffeeIngredients: calculates the amount of ingredients needed to make several cups of coffee.
 3) EnoughCoffee: calculates if thr machine is able to make certain number of cups of coffee or not.
