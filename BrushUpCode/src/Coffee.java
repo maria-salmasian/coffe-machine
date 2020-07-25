@@ -1,6 +1,5 @@
 import java.util.Scanner;
-
-public class Coffee {
+class Coffee {
     private int coffeeBeans = 120;
     private int water = 400;
     private int milk = 540;
@@ -11,15 +10,15 @@ public class Coffee {
     private int espressoCoffee = 16;
     private int espressoMoney = 4;
 
-    int latteWater = 350;
-    int latteCoffee = 20;
-    int latteMilk = 75;
-    int latteMoney = 7;
+    private int latteWater = 350;
+    private int latteCoffee = 20;
+    private int latteMilk = 75;
+    private int latteMoney = 7;
 
-    int cappuccinoWater = 200;
-    int cappuccinoMilk = 100;
-    int cappuccinoCoffee = 12;
-    int cappuccinoMoney = 6;
+    private int cappuccinoWater = 200;
+    private int cappuccinoMilk = 100;
+    private int cappuccinoCoffee = 12;
+    private int cappuccinoMoney = 6;
 
     State coffeeMachineState = State.NONE;
     Scanner enter = new Scanner(System.in);
